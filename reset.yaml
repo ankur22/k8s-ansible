@@ -1,0 +1,10 @@
+---
+
+- name: Reset all hosts
+  hosts: both 
+  tasks:
+
+    - name: Reset host 
+      become: true
+      reboot:
+

@@ -1,0 +1,21 @@
+[primary]
+primary0 ansible_host=192.168.1.42
+
+[secondary]
+secondary0 ansible_host=192.168.1.40
+secondary1 ansible_host=192.168.1.41
+secondary2 ansible_host=192.168.1.43
+
+[primary:vars]
+ansible_user='{{ cluster_username }}'
+ansible_password='{{ cluster_password }}'
+ansible_become_pass='{{ cluster_sudo_password }}'
+
+[secondary:vars]
+ansible_user='{{ cluster_username }}'
+ansible_password='{{ cluster_password }}'
+ansible_become_pass='{{ cluster_sudo_password }}'
+
+[both:children]
+primary
+secondary
