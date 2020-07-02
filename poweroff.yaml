@@ -1,0 +1,13 @@
+---
+
+- name: Poweroff all hosts
+  hosts: both 
+  tasks:
+
+    - name: Poweroff host 
+      become: true
+      command: poweroff
+
+    - name: Wait for host to poweroff
+      local_action: wait_for host={{ ansible_ssh_host }} port=22 state=stopped
+
