@@ -27,3 +27,9 @@ ansible-playbook -i all-hosts reset.yaml --vault-password-file ansible-vault-pas
 ```
 ansible-playbook -i all-hosts ssh_cert.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
 ```
+
+## Poweroff all hosts
+
+```
+ansible-playbook -i all-hosts poweroff.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
+```
