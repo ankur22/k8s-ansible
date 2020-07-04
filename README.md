@@ -10,10 +10,10 @@ cluster_password: password
 cluster_sudo_password: sudo_password
 ```
 
-## Apt Update and Upgrade
+## Install microk8s and setup cluster 
 
 ```
-ansible-playbook -i all-hosts update.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
+ansible-playbook -i all-hosts k8s.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
 ```
 
 ## Reset all Nodes in the Cluster

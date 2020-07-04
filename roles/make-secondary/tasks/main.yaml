@@ -1,0 +1,9 @@
+---
+
+- debug:
+    msg: "{{ hostvars['primary0'][inventory_hostname] }}"
+
+- name: Join cluster
+  command: "{{ hostvars['primary0'][inventory_hostname] }}"
+  become: yes
+

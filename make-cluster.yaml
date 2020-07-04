@@ -1,0 +1,12 @@
+---
+
+- name: Playbook for all hosts
+  hosts: primary 
+  roles:
+    - make-primary
+
+- name: Playbook for all hosts
+  hosts: secondary 
+  roles:
+    - make-secondary
+

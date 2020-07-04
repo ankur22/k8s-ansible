@@ -1,0 +1,10 @@
+---
+
+- name: Playbook for all hosts
+  hosts: both 
+  tasks:
+    - debug: var=hostvars[inventory_hostname]
+    - name: Cluster info
+      command: microk8s.kubectl cluster-info
+      become: yes
+

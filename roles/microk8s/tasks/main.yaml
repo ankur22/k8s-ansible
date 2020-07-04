@@ -1,0 +1,17 @@
+---
+- name: Install microk8s
+  command: snap install microk8s --classic
+  become: yes
+
+- name: Start microk8s
+  command: microk8s.start && microk8s.inspect
+  become: yes
+
+- name: Cluster info
+  command: microk8s.kubectl cluster-info
+  become: yes
+  register: cluster_info
+
+- debug:
+    msg: "{{ cluster_info.stdout_lines }}"
+

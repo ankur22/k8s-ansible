@@ -1,0 +1,60 @@
+---
+
+- name: Make primary for secondary0
+  command: microk8s.add-node
+  become: yes
+  register: join_command_raw
+
+- debug:
+    msg: "{{ join_command_raw.stdout_lines[0] }}"
+
+- name: Extract primary join command for secondary0
+  shell: "echo {{ join_command_raw.stdout_lines[0] }} | sed -En 's/Join node with: microk8s (join .*)/microk8s.\\1/p'"
+  register: extracted_join_command
+
+- name: Set fact for secondary0
+  set_fact:
+    secondary0: "{{ extracted_join_command.stdout_lines[0] }}"
+
+- debug:
+    msg: "{{ secondary0 }}"
+
+
+- name: Make primary for secondary1
+  command: microk8s.add-node
+  become: yes
+  register: join_command_raw
+
+- debug:
+    msg: "{{ join_command_raw.stdout_lines[0] }}"
+
+- name: Extract primary join command for secondary1
+  shell: "echo {{ join_command_raw.stdout_lines[0] }} | sed -En 's/Join node with: microk8s (join .*)/microk8s.\\1/p'"
+  register: extracted_join_command
+
+- name: Set fact for secondary1
+  set_fact:
+    secondary1: "{{ extracted_join_command.stdout_lines[0] }}"
+
+- debug:
+    msg: "{{ secondary1 }}"
+
+
+- name: Make primary for secondary2
+  command: microk8s.add-node
+  become: yes
+  register: join_command_raw
+
+- debug:
+    msg: "{{ join_command_raw.stdout_lines[0] }}"
+
+- name: Extract primary join command for secondary2
+  shell: "echo {{ join_command_raw.stdout_lines[0] }} | sed -En 's/Join node with: microk8s (join .*)/microk8s.\\1/p'"
+  register: extracted_join_command
+
+- name: Set fact for secondary2
+  set_fact:
+    secondary2: "{{ extracted_join_command.stdout_lines[0] }}"
+
+- debug:
+    msg: "{{ secondary2 }}"
