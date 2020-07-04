@@ -3,6 +3,11 @@
 - debug:
     msg: "{{ hostvars['primary0'][inventory_hostname] }}"
 
+- name: Leave a cluster
+  command: microk8s leave
+  ignore_errors: yes
+  become: yes
+
 - name: Join cluster
   command: "{{ hostvars['primary0'][inventory_hostname] }}"
   become: yes
