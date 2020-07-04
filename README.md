@@ -16,6 +16,12 @@ cluster_sudo_password: sudo_password
 ansible-playbook -i all-hosts k8s.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
 ```
 
+To run kubectl on a remote machine against the cluster, retrieve the config from the master node:
+
+```
+microk8s config
+```
+
 You will need to run the following to get the token to be able to access the dashboard:
 
 ```
