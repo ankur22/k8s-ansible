@@ -16,6 +16,13 @@ cluster_sudo_password: sudo_password
 ansible-playbook -i all-hosts k8s.yaml --vault-password-file ansible-vault-password --extra-vars '@vault.yaml'
 ```
 
+You will need to run the following to get the token to be able to access the dashboard:
+
+```
+token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
+microk8s kubectl -n kube-system describe secret $token
+```
+
 ## Reset all Nodes in the Cluster
 
 ```
