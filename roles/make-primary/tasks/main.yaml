@@ -1,5 +1,13 @@
 ---
 
+- name: Enable dashboard
+  command: microk8s enable dashboard
+  become: yes
+
+- name: Enable dns
+  command: microk8s enable dns
+  become: yes
+
 - name: Make primary for secondary0
   command: microk8s.add-node
   become: yes

@@ -3,15 +3,16 @@
 - name: Playbook for all hosts
   hosts: both 
   roles:
+    - setup
     - update
     - microk8s
 
-- name: Playbook for all hosts
+- name: Playbook for primary host
   hosts: primary 
   roles:
     - make-primary
 
-- name: Playbook for all hosts
+- name: Playbook for secondary hosts
   hosts: secondary 
   roles:
     - make-secondary
